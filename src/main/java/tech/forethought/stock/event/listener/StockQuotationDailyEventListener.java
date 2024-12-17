@@ -58,7 +58,7 @@ public class StockQuotationDailyEventListener implements EventListener<StockQuot
                 LocalDateTime eventStartTime = LocalDateTime.now();
                 stockRepository.listRange(current.get(), size).parallelStream().forEach(stock -> {
                     try {
-                        stockQuotationDailyService.syncHistory(stock.getCode(), level, licence);
+                        stockQuotationDailyService.syncLatest(stock.getCode(), level, licence);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
