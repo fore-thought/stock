@@ -7,11 +7,10 @@ solon:
 
 wood:
   db:
-    jdbcUrl: jdbc:postgresql://:5432/stock
+    jdbcUrl: ${JDBC_URL}
     driverClassName: org.postgresql.Driver
-    username:
-    password:
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     minIdle: 1
 
-mairui:
-  licence:
+mairui.licence: ${MAIRUI_LICENCE}
