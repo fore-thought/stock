@@ -19,16 +19,10 @@ import lombok.Data;
  */
 @Data
 public class ZS {
-    /**
-     * 指数代码，如：sh000001（注意，股票代码可以不带“sh/sz”前缀，指数代码必须带）
-     */
+    /** 指数代码，如：sh000001（注意，股票代码可以不带“sh/sz”前缀，指数代码必须带） */
     private String dm;
-    /**
-     * 股票名称，例如：工商银行
-     */
+    /** 股票名称，例如：工商银行 */
     private String mc;
-    /**
-     * 交易所，"sh"表示上证，"sz"表示深证
-     */
+    /** 交易所，"sh"表示上证，"sz"表示深证 */
     private String jys;
 }

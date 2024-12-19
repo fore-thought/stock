@@ -24,31 +24,19 @@ import java.time.LocalDateTime;
 @Data
 @Table("stock")
 public class Stock {
-    /**
-     * 股票代码
-     */
+    /** 股票代码 */
     @PrimaryKey
     private String code;
-    /**
-     * 股票名称
-     */
+    /** 股票名称 */
     private String name;
-    /**
-     * 交易所
-     */
+    /** 交易所 */
     private String exchange;
 
-    /**
-     * 证监会二级行业代码
-     */
+    /** 证监会二级行业代码 */
     private String industryCode;
-    /**
-     * 证监会二级行业名称
-     */
+    /** 证监会二级行业名称 */
     private String industryName;
 
-    /**
-     * 股票每日行情同步时间
-     */
+    /** 股票每日行情同步时间 */
     private LocalDateTime quotationDailySyncTime;
 }

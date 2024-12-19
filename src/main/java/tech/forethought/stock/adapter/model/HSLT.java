@@ -19,16 +19,10 @@ import lombok.Data;
  */
 @Data
 public class HSLT {
-    /**
-     * 股票的六位交易代码，例如：601398
-     */
+    /** 股票的六位交易代码，例如：601398 */
     private String dm;
-    /**
-     * 股票名称，例如：工商银行
-     */
+    /** 股票名称，例如：工商银行 */
     private String mc;
-    /**
-     * 交易所，"sh"表示上证，"sz"表示深证
-     */
+    /** 交易所，"sh"表示上证，"sz"表示深证 */
     private String jys;
 }

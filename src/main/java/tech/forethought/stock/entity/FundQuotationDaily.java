@@ -25,51 +25,29 @@ import java.time.LocalDate;
 @Data
 @Table("fund_quotation_daily")
 public class FundQuotationDaily {
-    /**
-     * 编号 基金代码+交易时间 15900120240229
-     */
+    /** 编号 基金代码+交易时间 15900120240229 */
     @PrimaryKey
     private String id;
 
-    /**
-     * 基金代码
-     */
+    /** 基金代码 */
     private String code;
-    /**
-     * 交易时间
-     */
+    /** 交易时间 */
     private LocalDate tradeDate;
 
-    /**
-     * 开盘价（元）
-     */
+    /** 开盘价（元） */
     private BigDecimal openingPrice;
-    /**
-     * 最高价（元）
-     */
+    /** 最高价（元） */
     private BigDecimal highestPrice;
-    /**
-     * 最低价（元）
-     */
+    /** 最低价（元） */
     private BigDecimal lowestPrice;
-    /**
-     * 收盘价（元）
-     */
+    /** 收盘价（元） */
     private BigDecimal closingPrice;
-    /**
-     * 成交量（手）
-     */
+    /** 成交量（手） */
     private Integer tradingVolume;
-    /**
-     * 振幅（%）
-     */
+    /** 振幅（%） */
     private BigDecimal amplitude;
-    /**
-     * 涨跌幅（%）
-     */
+    /** 涨跌幅（%） */
     private BigDecimal percentChange;
-    /**
-     * 涨跌额（元）
-     */
+    /** 涨跌额（元） */
     private BigDecimal priceChange;
 }

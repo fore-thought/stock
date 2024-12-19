@@ -18,48 +18,26 @@ import java.math.BigDecimal;
 
 @Data
 public class FSJY {
-    /**
-     * 交易时间，短分时级别格式为yyyy-MM-dd HH:mm:ss，日线级别为yyyy-MM-dd
-     */
+    /** 交易时间，短分时级别格式为yyyy-MM-dd HH:mm:ss，日线级别为yyyy-MM-dd */
     private String d;
-    /**
-     * 开盘价（元）
-     */
+    /** 开盘价（元） */
     private BigDecimal o;
-    /**
-     * 最高价（元）
-     */
+    /** 最高价（元） */
     private BigDecimal h;
-    /**
-     * 最低价（元）
-     */
+    /** 最低价（元） */
     private BigDecimal l;
-    /**
-     * 收盘价（元）
-     */
+    /** 收盘价（元） */
     private BigDecimal c;
-    /**
-     * 成交量（手）
-     */
+    /** 成交量（手） */
     private Integer v;
-    /**
-     * 成交额（元）
-     */
+    /** 成交额（元） */
     private BigDecimal e;
-    /**
-     * 振幅（%）
-     */
+    /** 振幅（%） */
     private BigDecimal zf;
-    /**
-     * 换手率（%）
-     */
+    /** 换手率（%） */
     private BigDecimal hs;
-    /**
-     * 涨跌幅（%）
-     */
+    /** 涨跌幅（%） */
     private BigDecimal zd;
-    /**
-     * 涨跌额（元）
-     */
+    /** 涨跌额（元） */
     private BigDecimal zde;
 }

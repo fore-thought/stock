@@ -22,21 +22,13 @@ import org.noear.wood.annotation.Table;
 @Data
 @Table("industry")
 public class Industry {
-    /**
-     * 二级行业代码
-     */
+    /** 二级行业代码 */
     @PrimaryKey
     private String code;
-    /**
-     * 二级行业名称
-     */
+    /** 二级行业名称 */
     private String name;
-    /**
-     * 所属一级行业代码
-     */
+    /** 所属一级行业代码 */
     private String codeParent;
-    /**
-     * 所属一级行业名称
-     */
+    /** 所属一级行业名称 */
     private String nameParent;
 }

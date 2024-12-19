@@ -24,22 +24,14 @@ import java.time.LocalDateTime;
 @Data
 @Table("index")
 public class Index {
-    /**
-     * 指数代码
-     */
+    /** 指数代码 */
     @PrimaryKey
     private String code;
-    /**
-     * 指数名称
-     */
+    /** 指数名称 */
     private String name;
-    /**
-     * 交易所
-     */
+    /** 交易所 */
     private String exchange;
 
-    /**
-     * 股票指数每日行情同步时间
-     */
+    /** 股票指数每日行情同步时间 */
     private LocalDateTime quotationDailySyncTime;
 }

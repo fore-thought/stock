@@ -24,27 +24,17 @@ import java.time.LocalDateTime;
 @Data
 @Table("fund")
 public class Fund {
-    /**
-     * 基金代码
-     */
+    /** 基金代码 */
     @PrimaryKey
     private String code;
-    /**
-     * 基金名称
-     */
+    /** 基金名称 */
     private String name;
-    /**
-     * 交易所
-     */
+    /** 交易所 */
     private String exchange;
 
-    /**
-     * 基金类型
-     */
+    /** 基金类型 */
     private String type;
 
-    /**
-     * 基金每日行情同步时间
-     */
+    /** 基金每日行情同步时间 */
     private LocalDateTime quotationDailySyncTime;
 }

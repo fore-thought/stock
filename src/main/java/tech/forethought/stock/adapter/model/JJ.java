@@ -16,12 +16,8 @@ import lombok.Data;
 
 @Data
 public class JJ {
-    /**
-     * 基金的代码，例如：000030
-     */
+    /** 基金的代码，例如：000030 */
     private String dm;
-    /**
-     * 基金名称，例如：长城核心优选混合
-     */
+    /** 基金名称，例如：长城核心优选混合 */
     private String mc;
 }
