@@ -10,33 +10,13 @@
  * See the Mulan PubL v2 for more details.
  */
 
-/*
- * Copyright (c) [2024] [Murphy]
- * [Stock] is licensed under Mulan PubL v2.
- * You can use this software according to the terms and conditions of the Mulan PubL v2.
- * You may obtain a copy of Mulan PubL v2 at:
- *          http://license.coscl.org.cn/MulanPubL-2.0
- * THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND,
- * EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,
- * MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
- * See the Mulan PubL v2 for more details.
- */
-
 CREATE TABLE IF NOT EXISTS fund
 (
-    code                      VARCHAR(6)     NOT NULL PRIMARY KEY,
-    name                      VARCHAR(20)    NOT NULL,
-    exchange                  VARCHAR(2)     NULL,
-    type                      VARCHAR(10)    NOT NULL,
-    quotation_daily_sync_time TIMESTAMP      NULL,
-    opening_price             NUMERIC(16, 3) NULL,
-    highest_price             NUMERIC(16, 3) NULL,
-    lowest_price              NUMERIC(16, 3) NULL,
-    closing_price             NUMERIC(16, 3) NULL,
-    trading_volume            INTEGER        NULL,
-    amplitude                 NUMERIC(16, 3) NULL,
-    percent_change            NUMERIC(16, 2) NULL,
-    price_change              NUMERIC(16, 2) NULL
+    code                      VARCHAR(6)  NOT NULL PRIMARY KEY,
+    name                      VARCHAR(20) NOT NULL,
+    exchange                  VARCHAR(2)  NULL,
+    type                      VARCHAR(10) NOT NULL,
+    quotation_daily_sync_time TIMESTAMP   NULL
 );
 COMMENT ON TABLE fund IS '基金';
 COMMENT ON COLUMN fund.code IS '代码';
@@ -44,14 +24,6 @@ COMMENT ON COLUMN fund.name IS '名称';
 COMMENT ON COLUMN fund.exchange IS '交易所';
 COMMENT ON COLUMN fund.type IS '类型';
 COMMENT ON COLUMN fund.quotation_daily_sync_time IS '每日行情同步时间';
-COMMENT ON COLUMN fund.opening_price IS '开盘价（元）';
-COMMENT ON COLUMN fund.highest_price IS '最高价（元）';
-COMMENT ON COLUMN fund.lowest_price IS '最低价（元）';
-COMMENT ON COLUMN fund.closing_price IS '收盘价（元）';
-COMMENT ON COLUMN fund.trading_volume IS '成交量（手）';
-COMMENT ON COLUMN fund.amplitude IS '振幅（%）';
-COMMENT ON COLUMN fund.percent_change IS '涨跌幅（%）';
-COMMENT ON COLUMN fund.price_change IS '涨跌额（元）';
 
 CREATE TABLE IF NOT EXISTS fund_quotation_daily
 (
