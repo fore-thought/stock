@@ -25,6 +25,7 @@ import tech.forethought.stock.adapter.client.HSZGClient;
 import tech.forethought.stock.adapter.convertor.HSLTConvertor;
 import tech.forethought.stock.adapter.convertor.HSZGConvertor;
 import tech.forethought.stock.adapter.model.HSLT;
+import tech.forethought.stock.constant.QuotationField;
 import tech.forethought.stock.entity.Industry;
 import tech.forethought.stock.entity.Stock;
 import tech.forethought.stock.entity.StockQuotationDaily;
@@ -192,4 +193,8 @@ public class StockQuotationDailyService {
         log.info(code + " cost: " + (System.currentTimeMillis() - start) + " ms");
     }
 
+    public List<List<Object>> listFields(String code, LocalDate tradeDateStart, LocalDate tradeDateEnd, List<QuotationField> fields) {
+        return stockQuotationDailyRepository.listFields(code, tradeDateStart, tradeDateEnd,
+                fields.stream().map(QuotationField::columnName).collect(Collectors.toList()));
+    }
 }

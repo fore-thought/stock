@@ -21,6 +21,7 @@ import org.noear.solon.data.annotation.Tran;
 import tech.forethought.stock.adapter.client.JJClient;
 import tech.forethought.stock.adapter.convertor.JJConvertor;
 import tech.forethought.stock.adapter.model.JJ;
+import tech.forethought.stock.constant.QuotationField;
 import tech.forethought.stock.entity.Fund;
 import tech.forethought.stock.entity.FundQuotationDaily;
 import tech.forethought.stock.event.FundQuotationDailyEvent;
@@ -138,4 +139,8 @@ public class FundQuotationDailyService {
         log.info(code + " cost: " + (System.currentTimeMillis() - start) + " ms");
     }
 
+    public List<List<Object>> listFields(String code, LocalDate tradeDateStart, LocalDate tradeDateEnd, List<QuotationField> fields) {
+        return fundQuotationDailyRepository.listFields(code, tradeDateStart, tradeDateEnd,
+                fields.stream().map(QuotationField::columnName).collect(Collectors.toList()));
+    }
 }

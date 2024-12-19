@@ -12,11 +12,11 @@
 
 CREATE TABLE IF NOT EXISTS fund
 (
-    code                      VARCHAR(6)  NOT NULL PRIMARY KEY,
-    name                      VARCHAR(20) NOT NULL,
-    exchange                  VARCHAR(2)  NULL,
-    type                      VARCHAR(10) NOT NULL,
-    quotation_daily_sync_time TIMESTAMP   NULL
+    code                      VARCHAR(6)               NOT NULL PRIMARY KEY,
+    name                      VARCHAR(20)              NOT NULL,
+    exchange                  VARCHAR(2)               NULL,
+    type                      VARCHAR(10)              NOT NULL,
+    quotation_daily_sync_time TIMESTAMP WITH TIME ZONE NULL
 );
 COMMENT ON TABLE fund IS '基金';
 COMMENT ON COLUMN fund.code IS '代码';
@@ -70,12 +70,12 @@ COMMENT ON COLUMN industry.name_parent IS '所属一级行业名称';
 
 CREATE TABLE IF NOT EXISTS stock
 (
-    code                      VARCHAR(6)  NOT NULL PRIMARY KEY,
-    name                      VARCHAR(20) NOT NULL,
-    exchange                  VARCHAR(2)  NOT NULL,
-    industry_code             VARCHAR(3)  NULL,
-    industry_name             VARCHAR(30) NULL,
-    quotation_daily_sync_time TIMESTAMP   NULL
+    code                      VARCHAR(6)               NOT NULL PRIMARY KEY,
+    name                      VARCHAR(20)              NOT NULL,
+    exchange                  VARCHAR(2)               NOT NULL,
+    industry_code             VARCHAR(3)               NULL,
+    industry_name             VARCHAR(30)              NULL,
+    quotation_daily_sync_time TIMESTAMP WITH TIME ZONE NULL
 );
 COMMENT ON TABLE stock IS '股票';
 COMMENT ON COLUMN stock.code IS '代码';
@@ -121,10 +121,10 @@ CREATE INDEX IF NOT EXISTS stock_quotation_daily_trade_date_index ON stock_quota
 
 CREATE TABLE IF NOT EXISTS index
 (
-    code                      VARCHAR(8)  NOT NULL PRIMARY KEY,
-    name                      VARCHAR(10) NOT NULL,
-    exchange                  VARCHAR(4)  NOT NULL,
-    quotation_daily_sync_time TIMESTAMP   NULL
+    code                      VARCHAR(8)               NOT NULL PRIMARY KEY,
+    name                      VARCHAR(10)              NOT NULL,
+    exchange                  VARCHAR(4)               NOT NULL,
+    quotation_daily_sync_time TIMESTAMP WITH TIME ZONE NULL
 );
 COMMENT ON TABLE index IS '股票指数';
 COMMENT ON COLUMN index.code IS '代码';

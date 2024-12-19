@@ -13,11 +13,11 @@
 package tech.forethought.stock.api.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.noear.solon.annotation.Controller;
-import org.noear.solon.annotation.Get;
-import org.noear.solon.annotation.Inject;
-import org.noear.solon.annotation.Mapping;
+import org.noear.solon.annotation.*;
+import tech.forethought.stock.api.model.QuotationFieldsReqVO;
 import tech.forethought.stock.service.IndexQuotationDailyService;
+
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -30,5 +30,11 @@ public class IndexApiController {
     @Mapping("/job/daily")
     public void execJobDaily() {
         indexQuotationDailyService.jobDaily();
+    }
+
+    @Post
+    @Mapping("/quotation/list-fields")
+    public List<List<Object>> listQuotationFields(@Body QuotationFieldsReqVO reqVO) {
+        return indexQuotationDailyService.listFields(reqVO.getCode(), reqVO.getTradeDateStart(), reqVO.getTradeDateEnd(), reqVO.getFields());
     }
 }

@@ -12,15 +12,23 @@
 
 package tech.forethought.stock.repository;
 
+import lombok.extern.slf4j.Slf4j;
 import org.noear.solon.annotation.Component;
 import org.noear.wood.BaseMapper;
+import org.noear.wood.DbTableQuery;
 import org.noear.wood.annotation.Db;
+import org.noear.wood.utils.RunUtils;
+import tech.forethought.stock.constant.QuotationField;
 import tech.forethought.stock.entity.FundQuotationDaily;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Component
 public class FundQuotationDailyRepository {
     @Db
@@ -34,8 +42,8 @@ public class FundQuotationDailyRepository {
         fundQuotationDailyMapper.upsert(fundQuotationDaily, true);
     }
 
-    public void updateListById(List<FundQuotationDaily> fundQuotationDailyList) {
-        fundQuotationDailyMapper.updateList(fundQuotationDailyList, (fundQuotationDaily, dataItem) -> dataItem.setEntity(fundQuotationDaily), FundQuotationDaily::getId);
+    public void updateListById(List<FundQuotationDaily> quotations) {
+        fundQuotationDailyMapper.updateList(quotations, (quotation, dataItem) -> dataItem.setEntity(quotation), FundQuotationDaily::getId);
     }
 
     public Map<String, List<FundQuotationDaily>> mapAll() {
@@ -45,5 +53,25 @@ public class FundQuotationDailyRepository {
 
     public FundQuotationDaily findById(String id) {
         return fundQuotationDailyMapper.selectById(id);
+    }
+
+    public List<FundQuotationDaily> listByCode(String code, LocalDate tradeDateStart, LocalDate tradeDateEnd) {
+        return fundQuotationDailyMapper.selectList(mapper -> {
+            mapper.whereEq(FundQuotationDaily::getCode, code);
+            Optional.ofNullable(tradeDateStart).ifPresent(date -> mapper.andGte(FundQuotationDaily::getTradeDate, date));
+            Optional.ofNullable(tradeDateEnd).ifPresent(date -> mapper.andLte(FundQuotationDaily::getTradeDate, date));
+            mapper.orderByAsc(FundQuotationDaily::getId);
+        });
+    }
+
+    public List<List<Object>> listFields(String code, LocalDate tradeDateStart, LocalDate tradeDateEnd, List<String> fields) {
+        return RunUtils.call(() -> {
+                    DbTableQuery query = fundQuotationDailyMapper.db().table(fundQuotationDailyMapper.tableName()).whereEq(QuotationField.CODE.columnName(), code);
+                    Optional.ofNullable(tradeDateStart).ifPresent(date -> query.andGte(QuotationField.TRADE_DATE.columnName(), date));
+                    Optional.ofNullable(tradeDateEnd).ifPresent(date -> query.andLte(QuotationField.TRADE_DATE.columnName(), date));
+                    return query.orderByAsc(QuotationField.ID.columnName()).selectMapList(String.join(",", fields));
+                }).stream().map(map -> fields.stream().map(map::get)
+                        .map(obj -> obj instanceof Date ? obj.toString() : obj).collect(Collectors.toList()))
+                .collect(Collectors.toList());
     }
 }

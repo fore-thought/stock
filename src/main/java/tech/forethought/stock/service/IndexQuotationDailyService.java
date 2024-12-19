@@ -21,6 +21,7 @@ import org.noear.solon.data.annotation.Tran;
 import tech.forethought.stock.adapter.client.ZSClient;
 import tech.forethought.stock.adapter.convertor.ZSConvertor;
 import tech.forethought.stock.adapter.model.ZS;
+import tech.forethought.stock.constant.QuotationField;
 import tech.forethought.stock.entity.Index;
 import tech.forethought.stock.entity.IndexQuotationDaily;
 import tech.forethought.stock.event.IndexQuotationDailyEvent;
@@ -142,4 +143,8 @@ public class IndexQuotationDailyService {
         log.info(code + " cost: " + (System.currentTimeMillis() - start) + " ms");
     }
 
+    public List<List<Object>> listFields(String code, LocalDate tradeDateStart, LocalDate tradeDateEnd, List<QuotationField> fields) {
+        return indexQuotationDailyRepository.listFields(code, tradeDateStart, tradeDateEnd,
+                fields.stream().map(QuotationField::columnName).collect(Collectors.toList()));
+    }
 }
