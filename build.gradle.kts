@@ -65,10 +65,9 @@ tasks.jar {
     manifest.attributes["Main-Class"] = "tech.forethought.stock.Main"
     dependsOn(configurations.runtimeClasspath)
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    from(configurations.runtimeClasspath.get().map {
-        if (it.isDirectory) it else zipTree(it)
-    })
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
     from(sourceSets.main.get().output)
+    from("LICENSE") { into("META-INF") }
 }
 
 publishing {
