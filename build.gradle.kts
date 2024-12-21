@@ -52,6 +52,7 @@ tasks.withType<JavaCompile> {
 tasks.withType<ProcessResources> {
     filesMatching("app.yml") {
         expand(
+            "SERVER_PORT" to System.getenv("SERVER_PORT"),
             "JDBC_URL" to System.getenv("JDBC_URL"),
             "DB_USERNAME" to System.getenv("DB_USERNAME"),
             "DB_PASSWORD" to System.getenv("DB_PASSWORD"),
