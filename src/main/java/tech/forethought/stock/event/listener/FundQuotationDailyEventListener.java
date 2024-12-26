@@ -64,11 +64,11 @@ public class FundQuotationDailyEventListener implements EventListener<FundQuotat
                     }
                 });
                 LocalDateTime eventEndTime = LocalDateTime.now();
-                log.info("FundQuotationDailyEvent {} -> {}, cost: {}s", current.get(), current.get() + size - 1,
-                        ChronoUnit.SECONDS.between(eventStartTime, eventEndTime));
+                log.info("FundQuotationDailyEvent {} -> {}, cost: {}ms", current.get(), current.get() + size - 1,
+                        ChronoUnit.MILLIS.between(eventStartTime, eventEndTime));
                 current.getAndAdd(size);
             }
-        }, 0, 3 * 1000);
+        }, 0, 5 * 1000);
     }
 
 }
