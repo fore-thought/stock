@@ -10,23 +10,25 @@
  * See the Mulan PubL v2 for more details.
  */
 
-package tech.forethought.stock.entity;
+package tech.forethought.stock.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.noear.wood.annotation.Table;
 
-import java.math.BigDecimal;
+import java.io.Serial;
+import java.io.Serializable;
 
-/**
- * 股票每日行情
- */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Table("stock_quotation_daily")
-public class StockQuotationDaily extends Quotation {
-    /** 成交额（元） */
-    private BigDecimal transactionAmount;
-    /** 换手率（%） */
-    private BigDecimal turnoverRate;
+public class PageReq<T> implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    private T condition;
+    private final int size;
+    private final int index;
+
+    public PageReq(T condition, int size, int index) {
+        this.condition = condition;
+        this.size = size <= 0 ? 10 : size;
+        this.index = Math.max(index, 0);
+    }
 }

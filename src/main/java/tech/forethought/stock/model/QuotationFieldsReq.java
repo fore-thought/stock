@@ -10,7 +10,7 @@
  * See the Mulan PubL v2 for more details.
  */
 
-package tech.forethought.stock.api.model;
+package tech.forethought.stock.model;
 
 import lombok.Data;
 import org.noear.snack.annotation.ONodeAttr;
@@ -28,7 +28,7 @@ import java.util.List;
  * 每日行情字段集合请求体
  */
 @Data
-public class QuotationFieldsReqVO implements Serializable {
+public class QuotationFieldsReq implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 

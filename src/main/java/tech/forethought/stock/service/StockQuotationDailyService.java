@@ -193,6 +193,10 @@ public class StockQuotationDailyService {
         log.info(code + " cost: " + (System.currentTimeMillis() - start) + " ms");
     }
 
+    public StockQuotationDaily findLatest(String code) {
+        return stockQuotationDailyRepository.findLatestByCode(code);
+    }
+
     public List<List<Object>> listFields(String code, LocalDate tradeDateStart, LocalDate tradeDateEnd, List<QuotationField> fields) {
         return stockQuotationDailyRepository.listFields(code, tradeDateStart, tradeDateEnd,
                 fields.stream().map(QuotationField::columnName).collect(Collectors.toList()));

@@ -19,6 +19,7 @@ public enum QuotationField {
     ID("id"),
     CODE("code"),
     TRADE_DATE("trade_date"),
+    // common
     OPENING_PRICE("opening_price"),
     HIGHEST_PRICE("highest_price"),
     LOWEST_PRICE("lowest_price"),
@@ -27,6 +28,9 @@ public enum QuotationField {
     AMPLITUDE("amplitude"),
     PERCENT_CHANGE("percent_change"),
     PRICE_CHANGE("price_change"),
+    // stock & index
+    TRANSACTION_AMOUNT("transaction_amount"),
+    TURNOVER_RATE("turnover_rate"),
     ;
 
     private final String columnName;

@@ -49,6 +49,11 @@ public class StockQuotationDailyRepository {
         return stockQuotationDailyMapper.selectById(id);
     }
 
+    public StockQuotationDaily findLatestByCode(String code) {
+        return stockQuotationDailyMapper.selectItem(mapper -> mapper.whereEq(StockQuotationDaily::getCode, code)
+                .andByDesc(StockQuotationDaily::getId));
+    }
+
     public List<List<Object>> listFields(String code, LocalDate tradeDateStart, LocalDate tradeDateEnd, List<String> fields) {
         return RunUtils.call(() -> {
                     DbTableQuery query = stockQuotationDailyMapper.db().table(stockQuotationDailyMapper.tableName()).whereEq(QuotationField.CODE.columnName(), code);

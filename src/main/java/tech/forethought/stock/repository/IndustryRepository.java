@@ -32,6 +32,10 @@ public class IndustryRepository {
         industryList.forEach(industry -> industryMapper.upsert(industry, true));
     }
 
+    public List<Industry> listAll() {
+        return industryMapper.selectList(mapperWhereQ->mapperWhereQ.whereTrue().orderByAsc(Industry::getCode));
+    }
+
     public List<Industry> listRange(int start, int size) {
         return industryMapper.selectList(start, size, null);
     }

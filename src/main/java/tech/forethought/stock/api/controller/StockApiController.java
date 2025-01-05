@@ -14,8 +14,11 @@ package tech.forethought.stock.api.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.noear.solon.annotation.*;
-import tech.forethought.stock.api.model.QuotationFieldsReqVO;
+import tech.forethought.stock.entity.Stock;
+import tech.forethought.stock.model.*;
+import tech.forethought.stock.page.util.StockUtils;
 import tech.forethought.stock.service.StockQuotationDailyService;
+import tech.forethought.stock.service.StockService;
 
 import java.util.List;
 
@@ -23,6 +26,8 @@ import java.util.List;
 @Controller
 @Mapping("/api/stock")
 public class StockApiController {
+    @Inject
+    private StockService stockService;
     @Inject
     private StockQuotationDailyService stockQuotationDailyService;
 
@@ -38,9 +43,24 @@ public class StockApiController {
         stockQuotationDailyService.syncIndustry();
     }
 
+    @Get
+    @Mapping("/industry/list-tree")
+    public List<IndustryResp> listIndustryTree() {
+        return StockUtils.convertTreeList(stockService.industryListAll());
+    }
+
     @Post
     @Mapping("/quotation/list-fields")
-    public List<List<Object>> listQuotationFields(@Body QuotationFieldsReqVO reqVO) {
-        return stockQuotationDailyService.listFields(reqVO.getCode(), reqVO.getTradeDateStart(), reqVO.getTradeDateEnd(), reqVO.getFields());
+    public List<List<Object>> listQuotationFields(@Body QuotationFieldsReq req) {
+        return stockQuotationDailyService.listFields(req.getCode(), req.getTradeDateStart(), req.getTradeDateEnd(), req.getFields());
+    }
+
+    @Post
+    @Mapping("/page")
+    public PageResp<StockResp> page(@Body PageReq<StockReq> req) {
+        PageResp<Stock> page = stockService.page(req);
+        return new PageResp<>(page.getList().parallelStream().map(stock ->
+                StockUtils.convert(stock, stockQuotationDailyService.findLatest(stock.getCode()))).toList(),
+                page.getTotal(), page.getSize(), page.getIndex());
     }
 }

@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.noear.solon.Solon;
 import org.noear.solon.annotation.SolonMain;
 import org.noear.solon.scheduling.annotation.EnableScheduling;
+import org.noear.solon.web.cors.CrossFilter;
 import org.noear.wood.WoodConfig;
 
 @SolonMain
@@ -23,8 +24,10 @@ import org.noear.wood.WoodConfig;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
-        Solon.start(Main.class, args, app ->
-                WoodConfig.onExecuteAft(cmd -> log.info("[Wood] " + cmd.toSqlString())));
+        Solon.start(Main.class, args, app -> {
+            app.filter(new CrossFilter().pathPatterns("/api/**").allowedOrigins("*"));
+            WoodConfig.onExecuteAft(cmd -> log.info("[Wood] " + cmd.toSqlString()));
+        });
     }
 }
 

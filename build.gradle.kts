@@ -32,6 +32,7 @@ repositories {
 
 dependencies {
     implementation(platform("org.noear:solon-parent:3.0.4.1"))
+    /* web */
     implementation("org.noear:solon-web")
     /* data */
     implementation("com.zaxxer:HikariCP:6.2.1")

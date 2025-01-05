@@ -13,41 +13,14 @@
 package tech.forethought.stock.entity;
 
 import lombok.Data;
-import org.noear.wood.annotation.PrimaryKey;
+import lombok.EqualsAndHashCode;
 import org.noear.wood.annotation.Table;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
 
 /**
  * 基金每日行情
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Table("fund_quotation_daily")
-public class FundQuotationDaily {
-    /** 编号 基金代码+交易时间 15900120240229 */
-    @PrimaryKey
-    private String id;
-
-    /** 基金代码 */
-    private String code;
-    /** 交易时间 */
-    private LocalDate tradeDate;
-
-    /** 开盘价（元） */
-    private BigDecimal openingPrice;
-    /** 最高价（元） */
-    private BigDecimal highestPrice;
-    /** 最低价（元） */
-    private BigDecimal lowestPrice;
-    /** 收盘价（元） */
-    private BigDecimal closingPrice;
-    /** 成交量（手） */
-    private Integer tradingVolume;
-    /** 振幅（%） */
-    private BigDecimal amplitude;
-    /** 涨跌幅（%） */
-    private BigDecimal percentChange;
-    /** 涨跌额（元） */
-    private BigDecimal priceChange;
+public class FundQuotationDaily extends Quotation {
 }

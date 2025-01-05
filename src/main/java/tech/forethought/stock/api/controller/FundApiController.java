@@ -14,7 +14,7 @@ package tech.forethought.stock.api.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.noear.solon.annotation.*;
-import tech.forethought.stock.api.model.QuotationFieldsReqVO;
+import tech.forethought.stock.model.QuotationFieldsReq;
 import tech.forethought.stock.service.FundQuotationDailyService;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class FundApiController {
 
     @Post
     @Mapping("/quotation/list-fields")
-    public List<List<Object>> listQuotationFields(@Body QuotationFieldsReqVO reqVO) {
-        return fundQuotationDailyService.listFields(reqVO.getCode(), reqVO.getTradeDateStart(), reqVO.getTradeDateEnd(), reqVO.getFields());
+    public List<List<Object>> listQuotationFields(@Body QuotationFieldsReq req) {
+        return fundQuotationDailyService.listFields(req.getCode(), req.getTradeDateStart(), req.getTradeDateEnd(), req.getFields());
     }
 }
