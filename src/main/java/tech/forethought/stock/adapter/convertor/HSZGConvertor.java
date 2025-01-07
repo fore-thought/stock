@@ -13,7 +13,7 @@
 package tech.forethought.stock.adapter.convertor;
 
 import tech.forethought.stock.adapter.model.HSZG;
-import tech.forethought.stock.entity.Industry;
+import tech.forethought.stock.entity.stock.Industry;
 
 import java.util.List;
 import java.util.stream.Collectors;

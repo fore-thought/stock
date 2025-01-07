@@ -10,25 +10,24 @@
  * See the Mulan PubL v2 for more details.
  */
 
-package tech.forethought.stock.entity;
+package tech.forethought.stock.entity.index;
 
 import lombok.Data;
-import org.noear.wood.annotation.PrimaryKey;
+import lombok.EqualsAndHashCode;
 import org.noear.wood.annotation.Table;
+import tech.forethought.stock.entity.QuotationDaily;
+
+import java.math.BigDecimal;
 
 /**
- * 证监会二级行业
+ * 指数每日行情
  */
 @Data
-@Table("industry")
-public class Industry {
-    /** 二级行业代码 */
-    @PrimaryKey
-    private String code;
-    /** 二级行业名称 */
-    private String name;
-    /** 所属一级行业代码 */
-    private String codeParent;
-    /** 所属一级行业名称 */
-    private String nameParent;
+@EqualsAndHashCode(callSuper = true)
+@Table("index_quotation_daily")
+public class IndexQuotationDaily extends QuotationDaily {
+    /** 成交额（元） */
+    private BigDecimal transactionAmount;
+    /** 换手率（%） */
+    private BigDecimal turnoverRate;
 }

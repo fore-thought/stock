@@ -10,23 +10,18 @@
  * See the Mulan PubL v2 for more details.
  */
 
-package tech.forethought.stock.entity;
+package tech.forethought.stock.entity.fund;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.noear.wood.annotation.Table;
-
-import java.math.BigDecimal;
+import tech.forethought.stock.entity.QuotationDaily;
 
 /**
- * 指数每日行情
+ * 基金每日行情
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Table("index_quotation_daily")
-public class IndexQuotationDaily extends Quotation {
-    /** 成交额（元） */
-    private BigDecimal transactionAmount;
-    /** 换手率（%） */
-    private BigDecimal turnoverRate;
+@Table("fund_quotation_daily")
+public class FundQuotationDaily extends QuotationDaily {
 }

@@ -10,7 +10,7 @@
  * See the Mulan PubL v2 for more details.
  */
 
-package tech.forethought.stock.entity;
+package tech.forethought.stock.entity.index;
 
 import lombok.Data;
 import org.noear.wood.annotation.PrimaryKey;
@@ -19,22 +19,19 @@ import org.noear.wood.annotation.Table;
 import java.time.LocalDateTime;
 
 /**
- * 基金
+ * 指数
  */
 @Data
-@Table("fund")
-public class Fund {
-    /** 基金代码 */
+@Table("index")
+public class Index {
+    /** 指数代码 */
     @PrimaryKey
     private String code;
-    /** 基金名称 */
+    /** 指数名称 */
     private String name;
     /** 交易所 */
     private String exchange;
 
-    /** 基金类型 */
-    private String type;
-
-    /** 基金每日行情同步时间 */
+    /** 股票指数每日行情同步时间 */
     private LocalDateTime quotationDailySyncTime;
 }

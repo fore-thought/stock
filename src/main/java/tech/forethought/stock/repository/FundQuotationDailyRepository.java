@@ -19,7 +19,7 @@ import org.noear.wood.DbTableQuery;
 import org.noear.wood.annotation.Db;
 import org.noear.wood.utils.RunUtils;
 import tech.forethought.stock.constant.QuotationField;
-import tech.forethought.stock.entity.FundQuotationDaily;
+import tech.forethought.stock.entity.fund.FundQuotationDaily;
 
 import java.time.LocalDate;
 import java.util.Date;

@@ -18,7 +18,7 @@ import org.noear.wood.BaseMapper;
 import org.noear.wood.IPage;
 import org.noear.wood.WhereBase;
 import org.noear.wood.annotation.Db;
-import tech.forethought.stock.entity.Stock;
+import tech.forethought.stock.entity.stock.Stock;
 import tech.forethought.stock.model.PageReq;
 import tech.forethought.stock.model.PageResp;
 import tech.forethought.stock.model.StockReq;

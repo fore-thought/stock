@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
-public abstract class Quotation {
+public abstract class QuotationDaily {
     /** 编号 代码+交易时间 15900120240229 */
     @PrimaryKey
     private String id;

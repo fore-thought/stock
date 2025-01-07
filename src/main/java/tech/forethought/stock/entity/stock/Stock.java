@@ -10,17 +10,33 @@
  * See the Mulan PubL v2 for more details.
  */
 
-package tech.forethought.stock.entity;
+package tech.forethought.stock.entity.stock;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import org.noear.wood.annotation.PrimaryKey;
 import org.noear.wood.annotation.Table;
 
+import java.time.LocalDateTime;
+
 /**
- * 基金每日行情
+ * 股票
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Table("fund_quotation_daily")
-public class FundQuotationDaily extends Quotation {
+@Table("stock")
+public class Stock {
+    /** 股票代码 */
+    @PrimaryKey
+    private String code;
+    /** 股票名称 */
+    private String name;
+    /** 交易所 */
+    private String exchange;
+
+    /** 证监会二级行业代码 */
+    private String industryCode;
+    /** 证监会二级行业名称 */
+    private String industryName;
+
+    /** 股票每日行情同步时间 */
+    private LocalDateTime quotationDailySyncTime;
 }

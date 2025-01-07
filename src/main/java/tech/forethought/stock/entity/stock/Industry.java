@@ -10,28 +10,25 @@
  * See the Mulan PubL v2 for more details.
  */
 
-package tech.forethought.stock.entity;
+package tech.forethought.stock.entity.stock;
 
 import lombok.Data;
 import org.noear.wood.annotation.PrimaryKey;
 import org.noear.wood.annotation.Table;
 
-import java.time.LocalDateTime;
-
 /**
- * 指数
+ * 证监会二级行业
  */
 @Data
-@Table("index")
-public class Index {
-    /** 指数代码 */
+@Table("industry")
+public class Industry {
+    /** 二级行业代码 */
     @PrimaryKey
     private String code;
-    /** 指数名称 */
+    /** 二级行业名称 */
     private String name;
-    /** 交易所 */
-    private String exchange;
-
-    /** 股票指数每日行情同步时间 */
-    private LocalDateTime quotationDailySyncTime;
+    /** 所属一级行业代码 */
+    private String codeParent;
+    /** 所属一级行业名称 */
+    private String nameParent;
 }

@@ -15,7 +15,7 @@ package tech.forethought.stock.repository;
 import org.noear.solon.annotation.Component;
 import org.noear.wood.BaseMapper;
 import org.noear.wood.annotation.Db;
-import tech.forethought.stock.entity.Industry;
+import tech.forethought.stock.entity.stock.Industry;
 
 import java.util.List;
 

@@ -14,7 +14,7 @@ package tech.forethought.stock.api.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.noear.solon.annotation.*;
-import tech.forethought.stock.entity.Stock;
+import tech.forethought.stock.entity.stock.Stock;
 import tech.forethought.stock.model.*;
 import tech.forethought.stock.page.util.StockUtils;
 import tech.forethought.stock.service.StockQuotationDailyService;

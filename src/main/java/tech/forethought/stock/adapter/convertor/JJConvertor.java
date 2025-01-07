@@ -13,7 +13,7 @@
 package tech.forethought.stock.adapter.convertor;
 
 import tech.forethought.stock.adapter.model.JJ;
-import tech.forethought.stock.entity.Fund;
+import tech.forethought.stock.entity.fund.Fund;
 
 import java.util.List;
 import java.util.stream.Collectors;

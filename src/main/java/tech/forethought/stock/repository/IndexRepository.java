@@ -16,7 +16,7 @@ import org.noear.solon.annotation.Component;
 import org.noear.wood.BaseMapper;
 import org.noear.wood.WhereBase;
 import org.noear.wood.annotation.Db;
-import tech.forethought.stock.entity.Index;
+import tech.forethought.stock.entity.index.Index;
 
 import java.time.LocalDateTime;
 import java.util.List;
