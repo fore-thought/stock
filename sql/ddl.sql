@@ -132,7 +132,7 @@ COMMENT ON COLUMN index.name IS '名称';
 COMMENT ON COLUMN index.exchange IS '交易所';
 COMMENT ON COLUMN index.quotation_daily_sync_time IS '每日行情同步时间';
 
-create table index_quotation_daily
+CREATE TABLE IF NOT EXISTS index_quotation_daily
 (
     id                 VARCHAR(14)    NOT NULL PRIMARY KEY,
     code               VARCHAR(6)     NULL,
