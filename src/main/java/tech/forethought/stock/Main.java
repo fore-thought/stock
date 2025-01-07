@@ -19,12 +19,15 @@ import org.noear.solon.scheduling.annotation.EnableScheduling;
 import org.noear.solon.web.cors.CrossFilter;
 import org.noear.wood.WoodConfig;
 
+import java.util.TimeZone;
+
 @SolonMain
 @EnableScheduling
 @Slf4j
 public class Main {
     public static void main(String[] args) {
         Solon.start(Main.class, args, app -> {
+            TimeZone.setDefault(TimeZone.getTimeZone("GMT+8"));
             app.filter(new CrossFilter().pathPatterns("/api/**").allowedOrigins("*"));
             WoodConfig.onExecuteAft(cmd -> log.info("[Wood] " + cmd.toSqlString()));
         });
